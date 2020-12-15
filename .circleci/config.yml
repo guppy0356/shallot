@@ -13,4 +13,11 @@ jobs:
 
       - run:
           name: Touch uniq file
-          command: touch $(uuidgen)
+          command: |
+            mkdir tmp
+            touch tmp/$(uuidgen)
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - tmp
