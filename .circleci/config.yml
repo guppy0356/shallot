@@ -8,5 +8,9 @@ jobs:
       - checkout
 
       - run:
+          name: Install uuidgen
+          command: sudo apt-get install uuid-runtime
+
+      - run:
           name: Which bundler?
           command: bundle -v
