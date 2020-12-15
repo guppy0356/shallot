@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  touch:
     parallelism: 3
     docker:
       - image: circleci/ruby:2.6.5-stretch
@@ -21,3 +21,24 @@ jobs:
           root: .
           paths:
             - tmp
+  restore:
+    docker:
+      - image: circleci/ruby:2.6.5-stretch
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: tmp
+
+      - run:
+          name: List
+          command: ls tmp
+
+workflows:
+  version: 2
+  store_and_restore:
+    jobs:
+      - touch
+      - restore:
+          requires:
+            - touch
