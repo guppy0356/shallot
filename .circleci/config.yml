@@ -12,5 +12,5 @@ jobs:
           command: sudo apt-get install uuid-runtime
 
       - run:
-          name: Which bundler?
-          command: bundle -v
+          name: Touch uniq file
+          command: touch $(uuidgen)
