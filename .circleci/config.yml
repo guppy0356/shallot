@@ -16,6 +16,7 @@ jobs:
           command: |
             mkdir tmp
             touch tmp/$(uuidgen)
+            ls tmp
 
       - persist_to_workspace:
           root: .
